@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Prayer Book</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Prayer Book">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>:root{--bg:#f6f1e7;--panel:#fffdf8;--ink:#2a2520;--soft:#5c5449;--rubric:#9b2c1f;--rule:#ddd2bd;--accent:#7a1f14;--shadow:rgba(60,45,25,.10)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17161a;--panel:#1f1e23;--ink:#e8e3d8;--soft:#a49c8e;--rubric:#d98878;--rule:#3a3740;--accent:#e0a08f;--shadow:rgba(0,0,0,.5)}}
+:root[data-theme="dark"]{--bg:#17161a;--panel:#1f1e23;--ink:#e8e3d8;--soft:#a49c8e;--rubric:#d98878;--rule:#3a3740;--accent:#e0a08f;--shadow:rgba(0,0,0,.5)}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"EB Garamond",Garamond,"Times New Roman",Georgia,serif;font-size:var(--fs,19px);line-height:1.55;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--rule);padding:.55rem .9rem .4rem;padding-top:calc(.55rem + env(safe-area-inset-top));box-shadow:0 1px 6px var(--shadow)}
+.titlebar{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem}
+h1{font-size:1em;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin:0;color:var(--soft)}
+.controls{display:flex;gap:.3rem;flex-shrink:0}
+.ctrl{font-family:inherit;font-size:.8em;background:transparent;color:var(--soft);border:1px solid var(--rule);border-radius:5px;padding:.15rem .5rem;cursor:pointer;line-height:1.3}
+.ctrl:active{background:var(--rule)}
+nav{display:flex;gap:.15rem;margin-top:.5rem;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{font-family:inherit;font-size:.92em;background:transparent;border:0;border-bottom:2px solid transparent;color:var(--soft);padding:.3rem .6rem .35rem;cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+main{max-width:38rem;margin:0 auto;padding:1.2rem 1.15rem 4rem;padding-bottom:calc(4rem + env(safe-area-inset-bottom))}
+section[hidden]{display:none}
+h2{font-size:1.25em;font-weight:600;text-align:center;margin:0 0 .2rem}
+.subtitle{text-align:center;color:var(--soft);font-style:italic;font-size:.9em;margin:0 0 1.6rem}
+h3{font-size:1em;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin:2.2rem 0 .35rem;padding-bottom:.25rem;border-bottom:1px solid var(--rule);scroll-margin-top:6.5rem}
+h3:first-of-type{margin-top:1rem}
+p{margin:0 0 .85rem}
+.rubric{color:var(--rubric);font-style:italic;font-size:.85em;line-height:1.4;margin-bottom:.7rem}
+.psalm p{margin:0 0 .35rem;padding-left:1.1rem;text-indent:-1.1rem}
+.amen{font-variant:small-caps}
+.toc{list-style:none;padding:0;margin:0}
+.toc li{padding:.42rem 0;border-bottom:1px solid var(--rule)}
+.toc a{color:var(--accent);text-decoration:none}
+.toc .src{display:block;color:var(--soft);font-size:.8em;font-style:italic}
+</style>
+<meta name="theme-color" content="#100a04">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+</head>
+<body>
+<header>
+  <div class="titlebar">
+    <h1>A Prayer Book</h1>
+    <div class="controls">
+      <button class="ctrl" id="smaller" aria-label="Smaller text">A&minus;</button>
+      <button class="ctrl" id="larger" aria-label="Larger text">A+</button>
+      <button class="ctrl" id="theme" aria-label="Toggle light or dark">&#9788;</button>
+    </div>
+  </div>
+  <nav role="tablist"><button role="tab" data-tab="morning" aria-selected="true">Morning</button><button role="tab" data-tab="evening" aria-selected="false">Evening</button><button role="tab" data-tab="night" aria-selected="false">Night</button><button role="tab" data-tab="prayers" aria-selected="false">Prayers</button><button role="tab" data-tab="year" aria-selected="false">The Year</button><button role="tab" data-tab="index" aria-selected="false">Index</button></nav>
+</header>
+<main>
+<section id="morning">
+<h2>Morning</h2>
+<p class="subtitle">On rising</p>
+<h3 id="m-conf">A General Confession</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty and most merciful Father, We have erred, and strayed from thy ways like lost sheep, We have followed too much the devices and desires of our own hearts, We have offended against thy holy laws, We have left undone those things which we ought to have done, And we have done those things which we ought not to have done, And there is no health in us: But thou, O Lord, have mercy upon us miserable offenders; Spare thou them, O God, which confess their faults, Restore thou them that are penitent, According to thy promises declared unto mankind in Christ Jesu our Lord: And grant, O most merciful Father, for his sake, That we may hereafter live a godly, righteous, and sober life, To the glory of thy holy Name. <span class="amen">Amen.</span></p>
+<h3 id="m-pardon">A Collect for Pardon and Peace</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; said in place of the priest&rsquo;s absolution</p>
+<p>Grant, we beseech thee, merciful Lord, to thy faithful people pardon and peace; that they may be cleansed from all their sins, and serve thee with a quiet mind; through Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+<h3 id="m-lp">The Lord's Prayer</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Our Father, which art in heaven, Hallowed be thy Name, Thy kingdom come, Thy will be done, in earth as it is in heaven. Give us this day our daily bread; And forgive us our trespasses, As we forgive them that trespass against us; And lead us not into temptation, But deliver us from evil. <span class="amen">Amen.</span></p>
+<h3 id="m-peace">The Second Collect, for Peace</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>O God, who art the author of peace and lover of concord, in knowledge of whom standeth our eternal life, whose service is perfect freedom: Defend us thy humble servants in all assaults of our enemies; that we, surely trusting in thy defence, may not fear the power of any adversaries; through the might of Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+<h3 id="m-grace">The Third Collect, for Grace</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>O Lord, our heavenly Father, Almighty and everlasting God, who hast safely brought us to the beginning of this day: Defend us in the same with thy mighty power; and grant that this day we fall into no sin, neither run into any kind of danger; but that all our doings may be ordered by thy governance, to do always that is righteous in thy sight; through Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+<h3 id="m-clergy">For the Clergy and People</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty and everlasting God, who alone workest great marvels: Send down upon our Bishops, and Curates, and all Congregations committed to their charge, the healthful Spirit of thy grace; and that they may truly please thee, pour upon them the continual dew of thy blessing. Grant this, O Lord, for the honour of our Advocate and Mediator, Jesus Christ. <span class="amen">Amen.</span></p>
+<h3 id="m-chrys">A Prayer of St Chrysostom</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty God, who hast given us grace at this time with one accord to make our common supplications unto thee; and dost promise that when two or three are gathered together in thy Name thou wilt grant their requests: Fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them; granting us in this world knowledge of thy truth, and in the world to come life everlasting. <span class="amen">Amen.</span></p>
+<h3 id="m-thegrace">The Grace</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; 2 Corinthians 13</p>
+<p>The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Ghost, be with us all evermore. <span class="amen">Amen.</span></p>
+</section>
+<section id="evening" hidden>
+<h2>Evening</h2>
+<p class="subtitle">At the close of the day</p>
+<h3 id="e-conf">A General Confession</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty and most merciful Father, We have erred, and strayed from thy ways like lost sheep, We have followed too much the devices and desires of our own hearts, We have offended against thy holy laws, We have left undone those things which we ought to have done, And we have done those things which we ought not to have done, And there is no health in us: But thou, O Lord, have mercy upon us miserable offenders; Spare thou them, O God, which confess their faults, Restore thou them that are penitent, According to thy promises declared unto mankind in Christ Jesu our Lord: And grant, O most merciful Father, for his sake, That we may hereafter live a godly, righteous, and sober life, To the glory of thy holy Name. <span class="amen">Amen.</span></p>
+<h3 id="e-pardon">A Collect for Pardon and Peace</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; said in place of the priest&rsquo;s absolution</p>
+<p>Grant, we beseech thee, merciful Lord, to thy faithful people pardon and peace; that they may be cleansed from all their sins, and serve thee with a quiet mind; through Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+<h3 id="e-lp">The Lord's Prayer</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Our Father, which art in heaven, Hallowed be thy Name, Thy kingdom come, Thy will be done, in earth as it is in heaven. Give us this day our daily bread; And forgive us our trespasses, As we forgive them that trespass against us; And lead us not into temptation, But deliver us from evil. <span class="amen">Amen.</span></p>
+<h3 id="e-peace">The Second Collect, for Peace</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>O God, from whom all holy desires, all good counsels, and all just works do proceed: Give unto thy servants that peace which the world cannot give; that both our hearts may be set to obey thy commandments, and also that by thee we being defended from the fear of our enemies may pass our time in rest and quietness; through the merits of Jesus Christ our Saviour. <span class="amen">Amen.</span></p>
+<h3 id="e-chrys">A Prayer of St Chrysostom</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty God, who hast given us grace at this time with one accord to make our common supplications unto thee; and dost promise that when two or three are gathered together in thy Name thou wilt grant their requests: Fulfil now, O Lord, the desires and petitions of thy servants, as may be most expedient for them; granting us in this world knowledge of thy truth, and in the world to come life everlasting. <span class="amen">Amen.</span></p>
+<h3 id="e-thegrace">The Grace</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; 2 Corinthians 13</p>
+<p>The grace of our Lord Jesus Christ, and the love of God, and the fellowship of the Holy Ghost, be with us all evermore. <span class="amen">Amen.</span></p>
+</section>
+<section id="night" hidden>
+<h2>Night</h2>
+<p class="subtitle">Before sleep</p>
+<h3 id="n-perils">The Third Collect, for Aid against all Perils</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Lighten our darkness, we beseech thee, O Lord; and by thy great mercy defend us from all perils and dangers of this night; for the love of thy only Son, our Saviour, Jesus Christ. <span class="amen">Amen.</span></p>
+<h3 id="n-lp">The Lord's Prayer</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Our Father, which art in heaven, Hallowed be thy Name, Thy kingdom come, Thy will be done, in earth as it is in heaven. Give us this day our daily bread; And forgive us our trespasses, As we forgive them that trespass against us; And lead us not into temptation, But deliver us from evil. <span class="amen">Amen.</span></p>
+</section>
+<section id="prayers" hidden>
+<h2>Prayers</h2>
+<p class="subtitle">At any hour</p>
+<h3 id="p-creed">The Apostles' Creed</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>I believe in God the Father Almighty, Maker of heaven and earth: And in Jesus Christ his only Son our Lord, Who was conceived by the Holy Ghost, Born of the Virgin Mary, Suffered under Pontius Pilate, Was crucified, dead, and buried: He descended into hell; The third day he rose again from the dead; He ascended into heaven, And sitteth on the right hand of God the Father Almighty; From thence he shall come to judge the quick and the dead.</p><p>I believe in the Holy Ghost; The holy Catholick Church; The Communion of Saints; The Forgiveness of sins; The Resurrection of the body, And the Life everlasting. <span class="amen">Amen.</span></p>
+<h3 id="p-ps23">Psalm 23 &middot; Dominus regit me</h3>
+<p class="rubric">Coverdale, 1535, as appointed in the Prayer Book</p>
+<div class="psalm"><p>The Lord is my shepherd : therefore can I lack nothing.</p><p>He shall feed me in a green pasture : and lead me forth beside the waters of comfort.</p><p>He shall convert my soul : and bring me forth in the paths of righteousness, for his Name's sake.</p><p>Yea, though I walk through the valley of the shadow of death, I will fear no evil : for thou art with me; thy rod and thy staff comfort me.</p><p>Thou shalt prepare a table before me against them that trouble me : thou hast anointed my head with oil, and my cup shall be full.</p><p>But thy loving-kindness and mercy shall follow me all the days of my life : and I will dwell in the house of the Lord for ever.</p></div>
+</section>
+<section id="year" hidden>
+<h2>The Year</h2>
+<p class="subtitle">Collects for the seasons</p>
+<h3 id="y0">Advent Sunday</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty God, give us grace that we may cast away the works of darkness, and put upon us the armour of light, now in the time of this mortal life in which thy Son Jesus Christ came to visit us in great humility; that in the last day, when he shall come again in his glorious majesty to judge both the quick and the dead, we may rise to the life immortal; through him who liveth and reigneth with thee and the Holy Ghost, one God, now and for ever. <span class="amen">Amen.</span></p>
+<h3 id="y1">The Second Sunday in Advent</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Blessed Lord, who hast caused all holy Scriptures to be written for our learning; Grant that we may in such wise hear them, read, mark, learn, and inwardly digest them, that by patience and comfort of thy holy Word, we may embrace, and ever hold fast, the blessed hope of everlasting life, which thou hast given us in our Saviour Jesus Christ. <span class="amen">Amen.</span></p>
+<h3 id="y2">Christmas Day</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; 25 December</p>
+<p>Almighty God, who hast given us thy only-begotten Son to take our nature upon him, and as at this time to be born of a pure Virgin; Grant that we being regenerate, and made thy children by adoption and grace, may daily be renewed by thy Holy Spirit; through the same our Lord Jesus Christ, who liveth and reigneth with thee and the same Spirit, ever one God, world without end. <span class="amen">Amen.</span></p>
+<h3 id="y3">The Epiphany</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; 6 January</p>
+<p>O GOD, who by the leading of a star didst manifest thy only-begotten Son to the Gentiles: Mercifully grant, that we, which know thee now by faith, may after this life have the fruition of thy glorious Godhead; through Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+<h3 id="y4">Ash Wednesday</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>"</p>
+<h3 id="y5">Good Friday</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>"</p>
+<h3 id="y6">Easter Day</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty God, who through thine only-begotten Son Jesus Christ hast overcome death, and opened unto us the gate of everlasting life; We humbly beseech thee, that, as by thy special grace preventing us thou dost put into our minds good desires, so by thy continual help we may bring the same to good effect; through Jesus Christ our Lord, who liveth and reigneth with thee and the Holy Ghost, ever one God, world without end. <span class="amen">Amen.</span></p>
+<h3 id="y7">Ascension Day</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Grant, we beseech thee, Almighty God, that like as we do believe thy only-begotten Son our Lord Jesus Christ to have ascended into the heavens; so we may also in heart and mind thither ascend, and with him continually dwell, who liveth and reigneth with thee and the Holy Ghost, one God, world without end. <span class="amen">Amen.</span></p>
+<h3 id="y8">Whitsunday</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>God, who as at this time didst teach the hearts of thy faithful people, by the sending to them the light of thy Holy Spirit; Grant us by the same Spirit to have a right judgement in all things, and evermore to rejoice in his holy comfort; through the merits of Christ Jesus our Saviour, who liveth and reigneth with thee, in the unity of the same Spirit, one God, world without end. <span class="amen">Amen.</span></p>
+<h3 id="y9">Trinity Sunday</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>Almighty and everlasting God, who hast given unto us thy servants grace, by the confession of a true faith to acknowledge the glory of the eternal Trinity, and in the power of thy Divine Majesty to worship the Unity; We beseech thee, that thou wouldst keep us steadfast in this faith, and evermore defend us from all adversities, who livest and reignest, one God, world without end. <span class="amen">Amen.</span></p>
+<h3 id="y10">The Fourth Sunday after Trinity</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>O GOD, the protector of all that trust in thee, without whom nothing is strong, nothing is holy; Increase and multiply upon us thy mercy; that, thou being our ruler and guide, we may so pass through things temporal, that we finally lose not the things eternal: Grant this, O heavenly Father, for Jesus Christ's sake our Lord. <span class="amen">Amen.</span></p>
+<h3 id="y11">The Sixteenth Sunday after Trinity</h3>
+<p class="rubric">The Book of Common Prayer, 1662</p>
+<p>O LORD, we beseech thee, let thy continual pity cleanse and defend thy Church; and, because it cannot continue in safety without thy succour, preserve it evermore by thy help and goodness; through Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+<h3 id="y12">All Saints' Day</h3>
+<p class="rubric">The Book of Common Prayer, 1662 &middot; 1 November</p>
+<p>O ALMIGHTY God, who hast knit together thine elect in one communion and fellowship, in the mystical body of thy Son Christ our Lord; Grant us grace so to follow thy blessed Saints in all virtuous and godly living, that we may come to those unspeakable joys, which thou hast prepared for them that unfeignedly love thee; through Jesus Christ our Lord. <span class="amen">Amen.</span></p>
+</section>
+<section id="index" hidden>
+<h2>Index</h2>
+<p class="subtitle">Everything in the book</p>
+<ul class="toc"><li><a href="#m-pardon" data-tab="morning">A Collect for Pardon and Peace</a> <span class="src">The Book of Common Prayer, 1662 &middot; said in place of the priest&rsquo;s absolution</span></li><li><a href="#e-pardon" data-tab="evening">A Collect for Pardon and Peace</a> <span class="src">The Book of Common Prayer, 1662 &middot; said in place of the priest&rsquo;s absolution</span></li><li><a href="#m-conf" data-tab="morning">A General Confession</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#e-conf" data-tab="evening">A General Confession</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#m-chrys" data-tab="morning">A Prayer of St Chrysostom</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#e-chrys" data-tab="evening">A Prayer of St Chrysostom</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y0" data-tab="year">Advent Sunday</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y12" data-tab="year">All Saints' Day</a> <span class="src">The Book of Common Prayer, 1662 &middot; 1 November</span></li><li><a href="#y7" data-tab="year">Ascension Day</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y4" data-tab="year">Ash Wednesday</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y2" data-tab="year">Christmas Day</a> <span class="src">The Book of Common Prayer, 1662 &middot; 25 December</span></li><li><a href="#y6" data-tab="year">Easter Day</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#m-clergy" data-tab="morning">For the Clergy and People</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y5" data-tab="year">Good Friday</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#p-ps23" data-tab="prayers">Psalm 23 &middot; Dominus regit me</a> <span class="src">Coverdale, 1535, as appointed in the Prayer Book</span></li><li><a href="#p-creed" data-tab="prayers">The Apostles' Creed</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y3" data-tab="year">The Epiphany</a> <span class="src">The Book of Common Prayer, 1662 &middot; 6 January</span></li><li><a href="#y10" data-tab="year">The Fourth Sunday after Trinity</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#m-thegrace" data-tab="morning">The Grace</a> <span class="src">The Book of Common Prayer, 1662 &middot; 2 Corinthians 13</span></li><li><a href="#e-thegrace" data-tab="evening">The Grace</a> <span class="src">The Book of Common Prayer, 1662 &middot; 2 Corinthians 13</span></li><li><a href="#m-lp" data-tab="morning">The Lord's Prayer</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#e-lp" data-tab="evening">The Lord's Prayer</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#n-lp" data-tab="night">The Lord's Prayer</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#m-peace" data-tab="morning">The Second Collect, for Peace</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#e-peace" data-tab="evening">The Second Collect, for Peace</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y1" data-tab="year">The Second Sunday in Advent</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y11" data-tab="year">The Sixteenth Sunday after Trinity</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#n-perils" data-tab="night">The Third Collect, for Aid against all Perils</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#m-grace" data-tab="morning">The Third Collect, for Grace</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y9" data-tab="year">Trinity Sunday</a> <span class="src">The Book of Common Prayer, 1662</span></li><li><a href="#y8" data-tab="year">Whitsunday</a> <span class="src">The Book of Common Prayer, 1662</span></li></ul>
+</section>
+</main>
+<script>(function(){
+var tabs=document.querySelectorAll('nav button'),secs=document.querySelectorAll('main section'),root=document.documentElement;
+var valid=[];for(var i=0;i<tabs.length;i++)valid.push(tabs[i].dataset.tab);
+function store(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function show(name,keepScroll){
+ for(var i=0;i<secs.length;i++)secs[i].hidden=(secs[i].id!==name);
+ for(var j=0;j<tabs.length;j++)tabs[j].setAttribute('aria-selected',tabs[j].dataset.tab===name?'true':'false');
+ if(!keepScroll)window.scrollTo(0,0);
+ store('pb.tab',name);
+}
+for(var k=0;k<tabs.length;k++)tabs[k].addEventListener('click',function(){show(this.dataset.tab)});
+// index links jump to the right tab, then to the entry
+document.addEventListener('click',function(e){
+ var a=e.target.closest?e.target.closest('.toc a'):null;
+ if(!a)return;
+ e.preventDefault();
+ show(a.dataset.tab,true);
+ var el=document.getElementById(a.getAttribute('href').slice(1));
+ if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+});
+var sizes=[16,18,19,21,23,26,29],idx=2;
+function applySize(){document.body.style.setProperty('--fs',sizes[idx]+'px');store('pb.size',String(idx))}
+document.getElementById('larger').addEventListener('click',function(){if(idx<sizes.length-1){idx++;applySize()}});
+document.getElementById('smaller').addEventListener('click',function(){if(idx>0){idx--;applySize()}});
+document.getElementById('theme').addEventListener('click',function(){
+ var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+ var cur=root.getAttribute('data-theme')||(d?'dark':'light');
+ var next=cur==='dark'?'light':'dark';root.setAttribute('data-theme',next);store('pb.theme',next);
+});
+var th=load('pb.theme');if(th==='dark'||th==='light')root.setAttribute('data-theme',th);
+var sz=load('pb.size');if(sz!==null&&!isNaN(parseInt(sz,10))){var n=parseInt(sz,10);if(n>=0&&n<sizes.length)idx=n}
+applySize();
+var t=load('pb.tab');if(t&&valid.indexOf(t)!==-1)show(t);
+})();
+</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script>
+</body>
+</html>
